@@ -1,0 +1,17 @@
+name: themes
+description: A new Flutter package project.
+version: 1.0.0
+publish_to: "none"
+
+environment:
+  sdk: ^3.5.3
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  altive_lints: ^1.14.1
+  custom_lint: ^0.6.7
+  flutter_test:
+    sdk: flutter
