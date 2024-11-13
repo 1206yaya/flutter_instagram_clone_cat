@@ -49,3 +49,4 @@ xcconfig
 xcodebuild
 xcrun
 xcworkspace
+timeago
