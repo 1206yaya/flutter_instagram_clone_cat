@@ -54,6 +54,18 @@ class SignInUpRouteData extends GoRouteData {
         TypedGoRoute<TimelineRouteData>(
           name: TimelineRouteData.name,
           path: TimelineRouteData.path,
+          routes: [
+            TypedGoRoute<StackedDashboardRouteData>(
+              name: StackedDashboardRouteData.name,
+              path: StackedDashboardRouteData.path,
+              routes: [
+                TypedGoRoute<StackedDashboardFollowListRouteData>(
+                  name: StackedDashboardFollowListRouteData.name,
+                  path: StackedDashboardFollowListRouteData.path,
+                ),
+              ],
+            ),
+          ],
         ),
       ],
     ),
