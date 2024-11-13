@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 56 (28 per locale)
+/// Strings: 128 (64 per locale)
 ///
-/// Built on 2024-10-25 at 07:39 UTC
+/// Built on 2024-11-13 at 09:33 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -148,12 +148,15 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	late final Translations _root = this; // ignore: unused_field
 
 	// Translations
-	String get title => 'Flutter App Template';
+	String get title => 'InstaClone';
 	late final _StringsAccountPageJa accountPage = _StringsAccountPageJa._(_root);
 	late final _StringsAppInfoJa appInfo = _StringsAppInfoJa._(_root);
 	late final _StringsAuthorJa author = _StringsAuthorJa._(_root);
 	late final _StringsButtonJa button = _StringsButtonJa._(_root);
 	late final _StringsHomePageJa homePage = _StringsHomePageJa._(_root);
+	late final _StringsDashboardJa dashboard = _StringsDashboardJa._(_root);
+	late final _StringsCreatePostJa createPost = _StringsCreatePostJa._(_root);
+	late final _StringsFollowListJa followList = _StringsFollowListJa._(_root);
 	late final _StringsNotFoundPageJa notFoundPage = _StringsNotFoundPageJa._(_root);
 	late final _StringsPinkieMewPageJa pinkieMewPage = _StringsPinkieMewPageJa._(_root);
 	late final _StringsSettingsPageJa settingsPage = _StringsSettingsPageJa._(_root);
@@ -201,6 +204,7 @@ class _StringsButtonJa {
 	String get really => '本当によろしいですか？';
 	String get cancel => 'キャンセル';
 	late final _StringsButtonSignJa sign = _StringsButtonSignJa._(_root);
+	String get back => '戻る';
 }
 
 // Path: homePage
@@ -212,6 +216,43 @@ class _StringsHomePageJa {
 	// Translations
 	late final _StringsHomePageAppBarJa appBar = _StringsHomePageAppBarJa._(_root);
 	late final _StringsHomePageListJa list = _StringsHomePageListJa._(_root);
+}
+
+// Path: dashboard
+class _StringsDashboardJa {
+	_StringsDashboardJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	late final _StringsDashboardButtonJa button = _StringsDashboardButtonJa._(_root);
+	late final _StringsDashboardLabelJa label = _StringsDashboardLabelJa._(_root);
+	late final _StringsDashboardProfileEditJa profileEdit = _StringsDashboardProfileEditJa._(_root);
+}
+
+// Path: createPost
+class _StringsCreatePostJa {
+	_StringsCreatePostJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	late final _StringsCreatePostAppBarJa appBar = _StringsCreatePostAppBarJa._(_root);
+	late final _StringsCreatePostButtonsJa buttons = _StringsCreatePostButtonsJa._(_root);
+	late final _StringsCreatePostFieldsJa fields = _StringsCreatePostFieldsJa._(_root);
+	late final _StringsCreatePostImagePickerJa imagePicker = _StringsCreatePostImagePickerJa._(_root);
+}
+
+// Path: followList
+class _StringsFollowListJa {
+	_StringsFollowListJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	late final _StringsFollowListAppBarJa appBar = _StringsFollowListAppBarJa._(_root);
+	late final _StringsFollowListButtonJa button = _StringsFollowListButtonJa._(_root);
+	late final _StringsFollowListTabJa tab = _StringsFollowListTabJa._(_root);
 }
 
 // Path: notFoundPage
@@ -322,6 +363,121 @@ class _StringsHomePageListJa {
 	String get doubleCount => '2倍されたカウント値：';
 }
 
+// Path: dashboard.button
+class _StringsDashboardButtonJa {
+	_StringsDashboardButtonJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get follow => 'フォロー';
+	String get unfollow => 'フォロー中';
+}
+
+// Path: dashboard.label
+class _StringsDashboardLabelJa {
+	_StringsDashboardLabelJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get posts => '投稿数';
+	String get followers => 'フォロワー';
+	String get following => 'フォロー中';
+}
+
+// Path: dashboard.profileEdit
+class _StringsDashboardProfileEditJa {
+	_StringsDashboardProfileEditJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	late final _StringsDashboardProfileEditAppBarJa appBar = _StringsDashboardProfileEditAppBarJa._(_root);
+	late final _StringsDashboardProfileEditDialogJa dialog = _StringsDashboardProfileEditDialogJa._(_root);
+	late final _StringsDashboardProfileEditButtonsJa buttons = _StringsDashboardProfileEditButtonsJa._(_root);
+	late final _StringsDashboardProfileEditFieldsJa fields = _StringsDashboardProfileEditFieldsJa._(_root);
+}
+
+// Path: createPost.appBar
+class _StringsCreatePostAppBarJa {
+	_StringsCreatePostAppBarJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => '新規投稿';
+}
+
+// Path: createPost.buttons
+class _StringsCreatePostButtonsJa {
+	_StringsCreatePostButtonsJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get post => 'シェアする';
+	String get posting => '投稿中...';
+	String get selectPhoto => '写真を選択';
+	String get reSelectPhoto => '写真を選び直す';
+}
+
+// Path: createPost.fields
+class _StringsCreatePostFieldsJa {
+	_StringsCreatePostFieldsJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	late final _StringsCreatePostFieldsDescriptionJa description = _StringsCreatePostFieldsDescriptionJa._(_root);
+	late final _StringsCreatePostFieldsLocationJa location = _StringsCreatePostFieldsLocationJa._(_root);
+}
+
+// Path: createPost.imagePicker
+class _StringsCreatePostImagePickerJa {
+	_StringsCreatePostImagePickerJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get gallery => 'ギャラリーから選択';
+	String get camera => 'カメラで撮影';
+}
+
+// Path: followList.appBar
+class _StringsFollowListAppBarJa {
+	_StringsFollowListAppBarJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get followers => 'フォロワー';
+	String get following => 'フォロー中';
+}
+
+// Path: followList.button
+class _StringsFollowListButtonJa {
+	_StringsFollowListButtonJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get follow => 'フォロー';
+	String get following => 'フォロー中';
+	String get remove => '削除';
+}
+
+// Path: followList.tab
+class _StringsFollowListTabJa {
+	_StringsFollowListTabJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String followers({required Object count}) => '${count} フォロワー';
+	String following({required Object count}) => '${count} フォロー中';
+}
+
 // Path: notFoundPage.header
 class _StringsNotFoundPageHeaderJa {
 	_StringsNotFoundPageHeaderJa._(this._root);
@@ -424,6 +580,72 @@ class _StringsHomePageListAppInfoJa {
 	String get label => 'アプリ情報';
 }
 
+// Path: dashboard.profileEdit.appBar
+class _StringsDashboardProfileEditAppBarJa {
+	_StringsDashboardProfileEditAppBarJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => 'プロフィールを編集';
+}
+
+// Path: dashboard.profileEdit.dialog
+class _StringsDashboardProfileEditDialogJa {
+	_StringsDashboardProfileEditDialogJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	late final _StringsDashboardProfileEditDialogDiscardChangesJa discardChanges = _StringsDashboardProfileEditDialogDiscardChangesJa._(_root);
+}
+
+// Path: dashboard.profileEdit.buttons
+class _StringsDashboardProfileEditButtonsJa {
+	_StringsDashboardProfileEditButtonsJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get complete => '完了';
+}
+
+// Path: dashboard.profileEdit.fields
+class _StringsDashboardProfileEditFieldsJa {
+	_StringsDashboardProfileEditFieldsJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get displayName => '名前';
+	String get bio => '自己紹介';
+	String get photoUrl => 'プロフィール写真';
+	String hint({required Object field}) => '${field}を入力';
+}
+
+// Path: createPost.fields.description
+class _StringsCreatePostFieldsDescriptionJa {
+	_StringsCreatePostFieldsDescriptionJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get label => '説明';
+	String get hint => '写真の説明を入力してください';
+	late final _StringsCreatePostFieldsDescriptionErrorsJa errors = _StringsCreatePostFieldsDescriptionErrorsJa._(_root);
+}
+
+// Path: createPost.fields.location
+class _StringsCreatePostFieldsLocationJa {
+	_StringsCreatePostFieldsLocationJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get label => '場所';
+	String get hint => '場所を入力 (任意)';
+}
+
 // Path: settingsPage.list.themeSelector
 class _StringsSettingsPageListThemeSelectorJa {
 	_StringsSettingsPageListThemeSelectorJa._(this._root);
@@ -488,6 +710,30 @@ class _StringsTopLevelTabRiverpodExampleJa {
 	String get label => 'Riverpod';
 }
 
+// Path: dashboard.profileEdit.dialog.discardChanges
+class _StringsDashboardProfileEditDialogDiscardChangesJa {
+	_StringsDashboardProfileEditDialogDiscardChangesJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => '変更を破棄しますか？';
+	String get content => '編集内容は保存されません。';
+	String get continueEditing => '編集を続ける';
+	String get discard => '変更を破棄';
+}
+
+// Path: createPost.fields.description.errors
+class _StringsCreatePostFieldsDescriptionErrorsJa {
+	_StringsCreatePostFieldsDescriptionErrorsJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get required => '説明を入力してください';
+	String get tooLong => '説明は2000文字以内で入力してください';
+}
+
 // Path: theme.selection.page.appBar
 class _StringsThemeSelectionPageAppBarJa {
 	_StringsThemeSelectionPageAppBarJa._(this._root);
@@ -522,12 +768,15 @@ class _StringsEn implements Translations {
 	@override late final _StringsEn _root = this; // ignore: unused_field
 
 	// Translations
-	@override String get title => 'Flutter App Template';
+	@override String get title => 'InstaClone';
 	@override late final _StringsAccountPageEn accountPage = _StringsAccountPageEn._(_root);
 	@override late final _StringsAppInfoEn appInfo = _StringsAppInfoEn._(_root);
 	@override late final _StringsAuthorEn author = _StringsAuthorEn._(_root);
 	@override late final _StringsButtonEn button = _StringsButtonEn._(_root);
 	@override late final _StringsHomePageEn homePage = _StringsHomePageEn._(_root);
+	@override late final _StringsDashboardEn dashboard = _StringsDashboardEn._(_root);
+	@override late final _StringsCreatePostEn createPost = _StringsCreatePostEn._(_root);
+	@override late final _StringsFollowListEn followList = _StringsFollowListEn._(_root);
 	@override late final _StringsNotFoundPageEn notFoundPage = _StringsNotFoundPageEn._(_root);
 	@override late final _StringsPinkieMewPageEn pinkieMewPage = _StringsPinkieMewPageEn._(_root);
 	@override late final _StringsSettingsPageEn settingsPage = _StringsSettingsPageEn._(_root);
@@ -575,6 +824,7 @@ class _StringsButtonEn implements _StringsButtonJa {
 	@override String get really => 'Really?';
 	@override String get cancel => 'Cancel';
 	@override late final _StringsButtonSignEn sign = _StringsButtonSignEn._(_root);
+	@override String get back => 'Back';
 }
 
 // Path: homePage
@@ -586,6 +836,43 @@ class _StringsHomePageEn implements _StringsHomePageJa {
 	// Translations
 	@override late final _StringsHomePageAppBarEn appBar = _StringsHomePageAppBarEn._(_root);
 	@override late final _StringsHomePageListEn list = _StringsHomePageListEn._(_root);
+}
+
+// Path: dashboard
+class _StringsDashboardEn implements _StringsDashboardJa {
+	_StringsDashboardEn._(this._root);
+
+	@override final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	@override late final _StringsDashboardButtonEn button = _StringsDashboardButtonEn._(_root);
+	@override late final _StringsDashboardLabelEn label = _StringsDashboardLabelEn._(_root);
+	@override late final _StringsDashboardProfileEditEn profileEdit = _StringsDashboardProfileEditEn._(_root);
+}
+
+// Path: createPost
+class _StringsCreatePostEn implements _StringsCreatePostJa {
+	_StringsCreatePostEn._(this._root);
+
+	@override final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	@override late final _StringsCreatePostAppBarEn appBar = _StringsCreatePostAppBarEn._(_root);
+	@override late final _StringsCreatePostButtonsEn buttons = _StringsCreatePostButtonsEn._(_root);
+	@override late final _StringsCreatePostFieldsEn fields = _StringsCreatePostFieldsEn._(_root);
+	@override late final _StringsCreatePostImagePickerEn imagePicker = _StringsCreatePostImagePickerEn._(_root);
+}
+
+// Path: followList
+class _StringsFollowListEn implements _StringsFollowListJa {
+	_StringsFollowListEn._(this._root);
+
+	@override final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	@override late final _StringsFollowListAppBarEn appBar = _StringsFollowListAppBarEn._(_root);
+	@override late final _StringsFollowListButtonEn button = _StringsFollowListButtonEn._(_root);
+	@override late final _StringsFollowListTabEn tab = _StringsFollowListTabEn._(_root);
 }
 
 // Path: notFoundPage
@@ -696,6 +983,121 @@ class _StringsHomePageListEn implements _StringsHomePageListJa {
 	@override String get doubleCount => 'The doubled count value :';
 }
 
+// Path: dashboard.button
+class _StringsDashboardButtonEn implements _StringsDashboardButtonJa {
+	_StringsDashboardButtonEn._(this._root);
+
+	@override final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	@override String get follow => 'Follow';
+	@override String get unfollow => 'Unfollow';
+}
+
+// Path: dashboard.label
+class _StringsDashboardLabelEn implements _StringsDashboardLabelJa {
+	_StringsDashboardLabelEn._(this._root);
+
+	@override final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	@override String get posts => 'Posts';
+	@override String get followers => 'Followers';
+	@override String get following => 'Following';
+}
+
+// Path: dashboard.profileEdit
+class _StringsDashboardProfileEditEn implements _StringsDashboardProfileEditJa {
+	_StringsDashboardProfileEditEn._(this._root);
+
+	@override final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	@override late final _StringsDashboardProfileEditAppBarEn appBar = _StringsDashboardProfileEditAppBarEn._(_root);
+	@override late final _StringsDashboardProfileEditDialogEn dialog = _StringsDashboardProfileEditDialogEn._(_root);
+	@override late final _StringsDashboardProfileEditButtonsEn buttons = _StringsDashboardProfileEditButtonsEn._(_root);
+	@override late final _StringsDashboardProfileEditFieldsEn fields = _StringsDashboardProfileEditFieldsEn._(_root);
+}
+
+// Path: createPost.appBar
+class _StringsCreatePostAppBarEn implements _StringsCreatePostAppBarJa {
+	_StringsCreatePostAppBarEn._(this._root);
+
+	@override final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'New Post';
+}
+
+// Path: createPost.buttons
+class _StringsCreatePostButtonsEn implements _StringsCreatePostButtonsJa {
+	_StringsCreatePostButtonsEn._(this._root);
+
+	@override final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	@override String get post => 'Share';
+	@override String get posting => 'Posting...';
+	@override String get selectPhoto => 'Select Photo';
+	@override String get reSelectPhoto => 'Change Photo';
+}
+
+// Path: createPost.fields
+class _StringsCreatePostFieldsEn implements _StringsCreatePostFieldsJa {
+	_StringsCreatePostFieldsEn._(this._root);
+
+	@override final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	@override late final _StringsCreatePostFieldsDescriptionEn description = _StringsCreatePostFieldsDescriptionEn._(_root);
+	@override late final _StringsCreatePostFieldsLocationEn location = _StringsCreatePostFieldsLocationEn._(_root);
+}
+
+// Path: createPost.imagePicker
+class _StringsCreatePostImagePickerEn implements _StringsCreatePostImagePickerJa {
+	_StringsCreatePostImagePickerEn._(this._root);
+
+	@override final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	@override String get gallery => 'Choose from Gallery';
+	@override String get camera => 'Take Photo';
+}
+
+// Path: followList.appBar
+class _StringsFollowListAppBarEn implements _StringsFollowListAppBarJa {
+	_StringsFollowListAppBarEn._(this._root);
+
+	@override final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	@override String get followers => 'Followers';
+	@override String get following => 'Following';
+}
+
+// Path: followList.button
+class _StringsFollowListButtonEn implements _StringsFollowListButtonJa {
+	_StringsFollowListButtonEn._(this._root);
+
+	@override final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	@override String get follow => 'Follow';
+	@override String get following => 'Following';
+	@override String get remove => 'Remove';
+}
+
+// Path: followList.tab
+class _StringsFollowListTabEn implements _StringsFollowListTabJa {
+	_StringsFollowListTabEn._(this._root);
+
+	@override final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	@override String followers({required Object count}) => '${count} Followers';
+	@override String following({required Object count}) => '${count} Following';
+}
+
 // Path: notFoundPage.header
 class _StringsNotFoundPageHeaderEn implements _StringsNotFoundPageHeaderJa {
 	_StringsNotFoundPageHeaderEn._(this._root);
@@ -798,6 +1200,72 @@ class _StringsHomePageListAppInfoEn implements _StringsHomePageListAppInfoJa {
 	@override String get label => 'App Info';
 }
 
+// Path: dashboard.profileEdit.appBar
+class _StringsDashboardProfileEditAppBarEn implements _StringsDashboardProfileEditAppBarJa {
+	_StringsDashboardProfileEditAppBarEn._(this._root);
+
+	@override final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Edit Profile';
+}
+
+// Path: dashboard.profileEdit.dialog
+class _StringsDashboardProfileEditDialogEn implements _StringsDashboardProfileEditDialogJa {
+	_StringsDashboardProfileEditDialogEn._(this._root);
+
+	@override final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	@override late final _StringsDashboardProfileEditDialogDiscardChangesEn discardChanges = _StringsDashboardProfileEditDialogDiscardChangesEn._(_root);
+}
+
+// Path: dashboard.profileEdit.buttons
+class _StringsDashboardProfileEditButtonsEn implements _StringsDashboardProfileEditButtonsJa {
+	_StringsDashboardProfileEditButtonsEn._(this._root);
+
+	@override final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	@override String get complete => 'Done';
+}
+
+// Path: dashboard.profileEdit.fields
+class _StringsDashboardProfileEditFieldsEn implements _StringsDashboardProfileEditFieldsJa {
+	_StringsDashboardProfileEditFieldsEn._(this._root);
+
+	@override final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	@override String get displayName => 'Name';
+	@override String get bio => 'Bio';
+	@override String get photoUrl => 'Profile Photo';
+	@override String hint({required Object field}) => 'Enter ${field}';
+}
+
+// Path: createPost.fields.description
+class _StringsCreatePostFieldsDescriptionEn implements _StringsCreatePostFieldsDescriptionJa {
+	_StringsCreatePostFieldsDescriptionEn._(this._root);
+
+	@override final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	@override String get label => 'Description';
+	@override String get hint => 'Enter a description for your photo';
+	@override late final _StringsCreatePostFieldsDescriptionErrorsEn errors = _StringsCreatePostFieldsDescriptionErrorsEn._(_root);
+}
+
+// Path: createPost.fields.location
+class _StringsCreatePostFieldsLocationEn implements _StringsCreatePostFieldsLocationJa {
+	_StringsCreatePostFieldsLocationEn._(this._root);
+
+	@override final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	@override String get label => 'Location';
+	@override String get hint => 'Enter location (optional)';
+}
+
 // Path: settingsPage.list.themeSelector
 class _StringsSettingsPageListThemeSelectorEn implements _StringsSettingsPageListThemeSelectorJa {
 	_StringsSettingsPageListThemeSelectorEn._(this._root);
@@ -862,6 +1330,30 @@ class _StringsTopLevelTabRiverpodExampleEn implements _StringsTopLevelTabRiverpo
 	@override String get label => 'Riverpod';
 }
 
+// Path: dashboard.profileEdit.dialog.discardChanges
+class _StringsDashboardProfileEditDialogDiscardChangesEn implements _StringsDashboardProfileEditDialogDiscardChangesJa {
+	_StringsDashboardProfileEditDialogDiscardChangesEn._(this._root);
+
+	@override final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Discard Changes?';
+	@override String get content => 'Your changes will not be saved.';
+	@override String get continueEditing => 'Continue Editing';
+	@override String get discard => 'Discard';
+}
+
+// Path: createPost.fields.description.errors
+class _StringsCreatePostFieldsDescriptionErrorsEn implements _StringsCreatePostFieldsDescriptionErrorsJa {
+	_StringsCreatePostFieldsDescriptionErrorsEn._(this._root);
+
+	@override final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	@override String get required => 'Please enter a description';
+	@override String get tooLong => 'Description must be less than 2000 characters';
+}
+
 // Path: theme.selection.page.appBar
 class _StringsThemeSelectionPageAppBarEn implements _StringsThemeSelectionPageAppBarJa {
 	_StringsThemeSelectionPageAppBarEn._(this._root);
@@ -878,16 +1370,52 @@ class _StringsThemeSelectionPageAppBarEn implements _StringsThemeSelectionPageAp
 extension on Translations {
 	dynamic _flatMapFunction(String path) {
 		switch (path) {
-			case 'title': return 'Flutter App Template';
+			case 'title': return 'InstaClone';
 			case 'accountPage.appBar.title': return 'アカウント';
 			case 'appInfo.appBar.title': return 'アプリ情報';
 			case 'author.name': return 'Altive株式会社';
 			case 'button.really': return '本当によろしいですか？';
 			case 'button.cancel': return 'キャンセル';
 			case 'button.sign.out': return 'サインアウト';
+			case 'button.back': return '戻る';
 			case 'homePage.appBar.title': return 'Home';
 			case 'homePage.list.appInfo.label': return 'アプリ情報';
 			case 'homePage.list.doubleCount': return '2倍されたカウント値：';
+			case 'dashboard.button.follow': return 'フォロー';
+			case 'dashboard.button.unfollow': return 'フォロー中';
+			case 'dashboard.label.posts': return '投稿数';
+			case 'dashboard.label.followers': return 'フォロワー';
+			case 'dashboard.label.following': return 'フォロー中';
+			case 'dashboard.profileEdit.appBar.title': return 'プロフィールを編集';
+			case 'dashboard.profileEdit.dialog.discardChanges.title': return '変更を破棄しますか？';
+			case 'dashboard.profileEdit.dialog.discardChanges.content': return '編集内容は保存されません。';
+			case 'dashboard.profileEdit.dialog.discardChanges.continueEditing': return '編集を続ける';
+			case 'dashboard.profileEdit.dialog.discardChanges.discard': return '変更を破棄';
+			case 'dashboard.profileEdit.buttons.complete': return '完了';
+			case 'dashboard.profileEdit.fields.displayName': return '名前';
+			case 'dashboard.profileEdit.fields.bio': return '自己紹介';
+			case 'dashboard.profileEdit.fields.photoUrl': return 'プロフィール写真';
+			case 'dashboard.profileEdit.fields.hint': return ({required Object field}) => '${field}を入力';
+			case 'createPost.appBar.title': return '新規投稿';
+			case 'createPost.buttons.post': return 'シェアする';
+			case 'createPost.buttons.posting': return '投稿中...';
+			case 'createPost.buttons.selectPhoto': return '写真を選択';
+			case 'createPost.buttons.reSelectPhoto': return '写真を選び直す';
+			case 'createPost.fields.description.label': return '説明';
+			case 'createPost.fields.description.hint': return '写真の説明を入力してください';
+			case 'createPost.fields.description.errors.required': return '説明を入力してください';
+			case 'createPost.fields.description.errors.tooLong': return '説明は2000文字以内で入力してください';
+			case 'createPost.fields.location.label': return '場所';
+			case 'createPost.fields.location.hint': return '場所を入力 (任意)';
+			case 'createPost.imagePicker.gallery': return 'ギャラリーから選択';
+			case 'createPost.imagePicker.camera': return 'カメラで撮影';
+			case 'followList.appBar.followers': return 'フォロワー';
+			case 'followList.appBar.following': return 'フォロー中';
+			case 'followList.button.follow': return 'フォロー';
+			case 'followList.button.following': return 'フォロー中';
+			case 'followList.button.remove': return '削除';
+			case 'followList.tab.followers': return ({required Object count}) => '${count} フォロワー';
+			case 'followList.tab.following': return ({required Object count}) => '${count} フォロー中';
 			case 'notFoundPage.title': return '404 Not Found';
 			case 'notFoundPage.header.label': return 'ごめんなさい🙏';
 			case 'notFoundPage.description': return 'is not found.';
@@ -914,16 +1442,52 @@ extension on Translations {
 extension on _StringsEn {
 	dynamic _flatMapFunction(String path) {
 		switch (path) {
-			case 'title': return 'Flutter App Template';
+			case 'title': return 'InstaClone';
 			case 'accountPage.appBar.title': return 'Account';
 			case 'appInfo.appBar.title': return 'App information';
 			case 'author.name': return 'Altive inc';
 			case 'button.really': return 'Really?';
 			case 'button.cancel': return 'Cancel';
 			case 'button.sign.out': return 'Sign out';
+			case 'button.back': return 'Back';
 			case 'homePage.appBar.title': return 'Home';
 			case 'homePage.list.appInfo.label': return 'App Info';
 			case 'homePage.list.doubleCount': return 'The doubled count value :';
+			case 'dashboard.button.follow': return 'Follow';
+			case 'dashboard.button.unfollow': return 'Unfollow';
+			case 'dashboard.label.posts': return 'Posts';
+			case 'dashboard.label.followers': return 'Followers';
+			case 'dashboard.label.following': return 'Following';
+			case 'dashboard.profileEdit.appBar.title': return 'Edit Profile';
+			case 'dashboard.profileEdit.dialog.discardChanges.title': return 'Discard Changes?';
+			case 'dashboard.profileEdit.dialog.discardChanges.content': return 'Your changes will not be saved.';
+			case 'dashboard.profileEdit.dialog.discardChanges.continueEditing': return 'Continue Editing';
+			case 'dashboard.profileEdit.dialog.discardChanges.discard': return 'Discard';
+			case 'dashboard.profileEdit.buttons.complete': return 'Done';
+			case 'dashboard.profileEdit.fields.displayName': return 'Name';
+			case 'dashboard.profileEdit.fields.bio': return 'Bio';
+			case 'dashboard.profileEdit.fields.photoUrl': return 'Profile Photo';
+			case 'dashboard.profileEdit.fields.hint': return ({required Object field}) => 'Enter ${field}';
+			case 'createPost.appBar.title': return 'New Post';
+			case 'createPost.buttons.post': return 'Share';
+			case 'createPost.buttons.posting': return 'Posting...';
+			case 'createPost.buttons.selectPhoto': return 'Select Photo';
+			case 'createPost.buttons.reSelectPhoto': return 'Change Photo';
+			case 'createPost.fields.description.label': return 'Description';
+			case 'createPost.fields.description.hint': return 'Enter a description for your photo';
+			case 'createPost.fields.description.errors.required': return 'Please enter a description';
+			case 'createPost.fields.description.errors.tooLong': return 'Description must be less than 2000 characters';
+			case 'createPost.fields.location.label': return 'Location';
+			case 'createPost.fields.location.hint': return 'Enter location (optional)';
+			case 'createPost.imagePicker.gallery': return 'Choose from Gallery';
+			case 'createPost.imagePicker.camera': return 'Take Photo';
+			case 'followList.appBar.followers': return 'Followers';
+			case 'followList.appBar.following': return 'Following';
+			case 'followList.button.follow': return 'Follow';
+			case 'followList.button.following': return 'Following';
+			case 'followList.button.remove': return 'Remove';
+			case 'followList.tab.followers': return ({required Object count}) => '${count} Followers';
+			case 'followList.tab.following': return ({required Object count}) => '${count} Following';
 			case 'notFoundPage.title': return '404 Not Found';
 			case 'notFoundPage.header.label': return 'Sorry...';
 			case 'notFoundPage.description': return 'is not found.';

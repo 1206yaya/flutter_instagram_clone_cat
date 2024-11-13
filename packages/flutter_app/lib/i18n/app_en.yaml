@@ -1,5 +1,5 @@
 # locale: "en"
-title: "Flutter App Template"
+title: "InstaClone"
 accountPage:
   appBar:
     title: "Account"
@@ -13,6 +13,7 @@ button:
   cancel: "Cancel"
   sign:
     out: "Sign out"
+  back: "Back"
 homePage:
   appBar:
     title: "Home"
@@ -20,6 +21,63 @@ homePage:
     appInfo:
       label: "App Info"
     doubleCount: "The doubled count value :"
+dashboard:
+  button:
+    follow: "Follow"
+    unfollow: "Unfollow"
+  label:
+    posts: "Posts"
+    followers: "Followers"
+    following: "Following"
+  profileEdit:
+    appBar:
+      title: "Edit Profile"
+    dialog:
+      discardChanges:
+        title: "Discard Changes?"
+        content: "Your changes will not be saved."
+        continueEditing: "Continue Editing"
+        discard: "Discard"
+    buttons:
+      complete: "Done"
+
+    fields:
+      displayName: "Name"
+      bio: "Bio"
+      photoUrl: "Profile Photo"
+      hint: "Enter ${field}"
+createPost:
+  appBar:
+    title: "New Post"
+  buttons:
+    post: "Share"
+    posting: "Posting..."
+    selectPhoto: "Select Photo"
+    reSelectPhoto: "Change Photo"
+  fields:
+    description:
+      label: "Description"
+      hint: "Enter a description for your photo"
+      errors:
+        required: "Please enter a description"
+        tooLong: "Description must be less than 2000 characters"
+    location:
+      label: "Location"
+      hint: "Enter location (optional)"
+  imagePicker:
+    gallery: "Choose from Gallery"
+    camera: "Take Photo"
+followList:
+  appBar:
+    followers: "Followers"
+    following: "Following"
+  button:
+    follow: "Follow"
+    following: "Following"
+    remove: "Remove"
+  tab:
+    followers: "${count} Followers"
+    following: "${count} Following"
 notFoundPage:
   title: "404 Not Found"
   header:
