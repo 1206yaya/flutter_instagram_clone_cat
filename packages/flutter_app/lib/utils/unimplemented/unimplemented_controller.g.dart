@@ -2,27 +2,28 @@
 
 // ignore_for_file: duplicate_ignore, type=lint, implicit_dynamic_parameter, implicit_dynamic_type, implicit_dynamic_method, strict_raw_type
 
-part of 'router_provider.dart';
+part of 'unimplemented_controller.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$routerHash() => r'62b8f608c769bab66142ea5b582467d7d418c51e';
+String _$unimplementedControllerHash() =>
+    r'e008246268ad37069b74ffc2862719316c535b99';
 
-/// See also [router].
-@ProviderFor(router)
-final routerProvider = Provider<Raw<GoRouter>>.internal(
-  router,
-  name: r'routerProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$routerHash,
+/// See also [UnimplementedController].
+@ProviderFor(UnimplementedController)
+final unimplementedControllerProvider =
+    AutoDisposeAsyncNotifierProvider<UnimplementedController, void>.internal(
+  UnimplementedController.new,
+  name: r'unimplementedControllerProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$unimplementedControllerHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef RouterRef = ProviderRef<Raw<GoRouter>>;
+typedef _$UnimplementedController = AutoDisposeAsyncNotifier<void>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

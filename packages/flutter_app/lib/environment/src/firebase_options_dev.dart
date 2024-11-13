@@ -55,7 +55,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyDISVeIZxN9GYCMqLAYUD4et5RGtm34igw',
-    appId: '1:117552215653:android:4ee5fb1c617702246fb88c',
+    appId: '1:117552215653:android:0a7548a0b4617ba06fb88c',
     messagingSenderId: '117552215653',
     projectId: 'someapp-dev-dfa74',
     storageBucket: 'someapp-dev-dfa74.appspot.com',
@@ -63,13 +63,13 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyA1tQtyju6RFuhJ3B28-m5ccfVihxQ6-5s',
-    appId: '1:117552215653:ios:859e132562030e3d6fb88c',
+    appId: '1:117552215653:ios:77b76684bbfe8ad06fb88c',
     messagingSenderId: '117552215653',
     projectId: 'someapp-dev-dfa74',
     storageBucket: 'someapp-dev-dfa74.appspot.com',
     androidClientId: '117552215653-87n8j34nldj8tk7tjdcmunl1fbbrrt1i.apps.googleusercontent.com',
-    iosClientId: '117552215653-5dqqqgp7joq7t8urcl7vcogr8ualelr4.apps.googleusercontent.com',
-    iosBundleId: 'com.u1206yaya.FlutterAppTemplate.dev',
+    iosClientId: '117552215653-a9jpqmnt3dv21t68rpoddms5bv0ttoki.apps.googleusercontent.com',
+    iosBundleId: 'com.u1206yaya.FlutterFirInstagramCloneCat.dev',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(

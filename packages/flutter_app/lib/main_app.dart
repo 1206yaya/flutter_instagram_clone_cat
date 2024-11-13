@@ -3,10 +3,10 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:themes/themes.dart';
 
-import 'features/theme_selector/theme_selector.dart';
 import 'gen/strings.g.dart';
 import 'router/router.dart';
-import 'util/providers/scaffold_messenger_key_provider.dart';
+import 'utils/providers/scaffold_messenger_key_provider.dart';
+import 'utils/theme_selector/theme_selector_provider.dart';
 
 class MainApp extends ConsumerWidget {
   const MainApp({super.key});

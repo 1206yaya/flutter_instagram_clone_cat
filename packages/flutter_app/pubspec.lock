@@ -494,7 +494,7 @@ packages:
     source: hosted
     version: "0.5.10+2"
   firebase_auth:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: firebase_auth
       sha256: d453acec0d958ba0e25d41a9901b32cb77d1535766903dea7a61b2788c304596
@@ -1884,15 +1884,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.1.2"
-  zakfire_authenticator:
-    dependency: "direct main"
-    description:
-      path: "packages/zakfire_authenticator"
-      ref: HEAD
-      resolved-ref: "7977935d38c4cb39b32fafd9314246cbfe1eceaf"
-      url: "https://github.com/1206yaya/flutter_zakfire.git"
-    source: git
-    version: "0.0.1"
 sdks:
   dart: ">=3.5.3 <4.0.0"
   flutter: ">=3.24.0"

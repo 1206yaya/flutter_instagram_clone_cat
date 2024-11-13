@@ -11,8 +11,8 @@ import 'environment/environment.dart';
 import 'gen/strings.g.dart';
 import 'main_app.dart';
 import 'package_adaptor/tracker_provider.dart';
-import 'util/logger/provider_logger.dart';
-import 'util/providers/shared_preferences_provider.dart';
+import 'utils/logger/provider_logger.dart';
+import 'utils/providers/shared_preferences_provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
