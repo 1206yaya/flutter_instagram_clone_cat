@@ -1,9 +1,9 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import 'package_adaptor/package_info_provider.dart';
-import 'utils/providers/providers.dart';
-import 'utils/user_device/user_device_provider.dart';
+import '../../../package_adaptor/package_info_provider.dart';
+import '../../../utils/providers/providers.dart';
+import '../../../utils/user_device/user_device_provider.dart';
 
 part 'initialization_provider.g.dart';
 

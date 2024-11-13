@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../initialization_provider.dart';
+import '../application/initialization_provider.dart';
 
-class InitializationPage extends ConsumerWidget {
-  const InitializationPage({super.key});
+class InitializationScreen extends ConsumerWidget {
+  const InitializationScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

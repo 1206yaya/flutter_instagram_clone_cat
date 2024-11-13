@@ -10,8 +10,8 @@ import '../../../utils/providers/locales_provider.dart';
 
 /// The page that serves as the main content of the application.
 /// It can have multiple Navigation items and switch between internal pages.
-class MainPage extends HookConsumerWidget {
-  const MainPage({
+class MainScreen extends HookConsumerWidget {
+  const MainScreen({
     super.key,
     required this.navigationShell,
   });

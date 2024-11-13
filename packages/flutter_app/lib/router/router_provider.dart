@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../initialization_provider.dart';
+import '../features/initialization/application/initialization_provider.dart';
 import '../package_adaptor/tracker_provider.dart';
 import '../utils/firebase/firebase_service.dart';
 import '../utils/logger.dart';
@@ -26,23 +26,23 @@ Raw<GoRouter> router(RouterRef ref) {
     routes: $appRoutes,
     refreshListenable: GoRouterRefreshStream(auth.userChanges()),
     redirect: (context, state) {
-      // 初期化用ロジックの説明は、README#設計と実装の方針 を参照してください。
       if (initialization.isLoading || initialization.hasError) {
         return InitializationRoute.path;
       }
 
       final isLoggedIn = auth.currentUser != null;
+
       if (!isLoggedIn && state.matchedLocation != SignInUpRouteData.path) {
         logger.info('Redirecting to sign in');
         return SignInUpRouteData.path;
       }
       if (isLoggedIn && state.matchedLocation == SignInUpRouteData.path) {
         logger.info('Redirecting to home');
-        return HomeRouteData.path;
+        return TimelineRouteData.path;
       }
 
       if (state.matchedLocation == '/') {
-        return HomeRouteData.path;
+        return TimelineRouteData.path;
       }
       return null;
     },

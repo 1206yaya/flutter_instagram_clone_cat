@@ -68,9 +68,57 @@ RouteBase get $mainShellRouteData => StatefulShellRouteData.$route(
         StatefulShellBranchData.$branch(
           routes: [
             GoRouteData.$route(
-              path: '/home',
-              name: '/home',
-              factory: $HomeRouteDataExtension._fromState,
+              path: '/timeline',
+              name: '/timeline',
+              factory: $TimelineRouteDataExtension._fromState,
+            ),
+          ],
+        ),
+        StatefulShellBranchData.$branch(
+          routes: [
+            GoRouteData.$route(
+              path: '/explore',
+              name: '/explore',
+              factory: $ExploreRouteDataExtension._fromState,
+            ),
+          ],
+        ),
+        StatefulShellBranchData.$branch(
+          routes: [
+            GoRouteData.$route(
+              path: '/post',
+              name: '/post',
+              factory: $PostRouteDataExtension._fromState,
+            ),
+          ],
+        ),
+        StatefulShellBranchData.$branch(
+          routes: [
+            GoRouteData.$route(
+              path: '/dashboard',
+              name: '/dashboard',
+              factory: $DashboardRouteDataExtension._fromState,
+            ),
+          ],
+        ),
+        StatefulShellBranchData.$branch(
+          routes: [
+            GoRouteData.$route(
+              path: '/settings',
+              name: '/settings',
+              factory: $SettingsRouteDataExtension._fromState,
+              routes: [
+                GoRouteData.$route(
+                  path: 'theme-selection',
+                  name: '/theme-selection',
+                  factory: $ThemeSelectionRouteDataExtension._fromState,
+                ),
+                GoRouteData.$route(
+                  path: 'account',
+                  name: '/account',
+                  factory: $AccountRouteDataExtension._fromState,
+                ),
+              ],
             ),
           ],
         ),
@@ -82,11 +130,119 @@ extension $MainShellRouteDataExtension on MainShellRouteData {
       const MainShellRouteData();
 }
 
-extension $HomeRouteDataExtension on HomeRouteData {
-  static HomeRouteData _fromState(GoRouterState state) => const HomeRouteData();
+extension $TimelineRouteDataExtension on TimelineRouteData {
+  static TimelineRouteData _fromState(GoRouterState state) =>
+      const TimelineRouteData();
 
   String get location => GoRouteData.$location(
-        '/home',
+        '/timeline',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $ExploreRouteDataExtension on ExploreRouteData {
+  static ExploreRouteData _fromState(GoRouterState state) =>
+      const ExploreRouteData();
+
+  String get location => GoRouteData.$location(
+        '/explore',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $PostRouteDataExtension on PostRouteData {
+  static PostRouteData _fromState(GoRouterState state) => const PostRouteData();
+
+  String get location => GoRouteData.$location(
+        '/post',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $DashboardRouteDataExtension on DashboardRouteData {
+  static DashboardRouteData _fromState(GoRouterState state) =>
+      const DashboardRouteData();
+
+  String get location => GoRouteData.$location(
+        '/dashboard',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $SettingsRouteDataExtension on SettingsRouteData {
+  static SettingsRouteData _fromState(GoRouterState state) =>
+      const SettingsRouteData();
+
+  String get location => GoRouteData.$location(
+        '/settings',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $ThemeSelectionRouteDataExtension on ThemeSelectionRouteData {
+  static ThemeSelectionRouteData _fromState(GoRouterState state) =>
+      const ThemeSelectionRouteData();
+
+  String get location => GoRouteData.$location(
+        '/settings/theme-selection',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $AccountRouteDataExtension on AccountRouteData {
+  static AccountRouteData _fromState(GoRouterState state) =>
+      const AccountRouteData();
+
+  String get location => GoRouteData.$location(
+        '/settings/account',
       );
 
   void go(BuildContext context) => context.go(location);

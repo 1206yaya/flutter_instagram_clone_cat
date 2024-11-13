@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../package_adaptor/tracker_provider.dart';
+import '../package_adaptor/tracker_provider.dart';
 
 /// [CachedNetworkImage]'s wrapper widget.
 class AppCachedNetworkImage extends StatelessWidget {
