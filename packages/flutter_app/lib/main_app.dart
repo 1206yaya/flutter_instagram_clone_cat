@@ -29,6 +29,7 @@ class MainApp extends ConsumerWidget {
       ],
       supportedLocales: AppLocaleUtils.supportedLocales,
       scaffoldMessengerKey: ref.watch(scaffoldMessengerKeyProvider),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
