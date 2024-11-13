@@ -59,6 +59,7 @@ dependencies:
 dev_dependencies:
   firebase_auth_mocks: ^0.14.1
   fake_cloud_firestore: ^3.0.3
+  firebase_storage_mocks: ^0.7.0
 
   altive_lints: ^1.14.1
   build_runner: ^2.4.12

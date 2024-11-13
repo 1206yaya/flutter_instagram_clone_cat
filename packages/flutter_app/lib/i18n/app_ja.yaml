@@ -1,5 +1,5 @@
 # locale: "ja"
-title: "Flutter App Template"
+title: "InstaClone"
 accountPage:
   appBar:
     title: "アカウント"
@@ -13,6 +13,7 @@ button:
   cancel: "キャンセル"
   sign:
     out: "サインアウト"
+  back: "戻る"
 homePage:
   appBar:
     title: "Home"
@@ -20,6 +21,62 @@ homePage:
     appInfo:
       label: "アプリ情報"
     doubleCount: "2倍されたカウント値："
+dashboard:
+  button:
+    follow: "フォロー"
+    unfollow: "フォロー中"
+  label:
+    posts: "投稿数"
+    followers: "フォロワー"
+    following: "フォロー中"
+  profileEdit:
+    appBar:
+      title: "プロフィールを編集"
+    dialog:
+      discardChanges:
+        title: "変更を破棄しますか？"
+        content: "編集内容は保存されません。"
+        continueEditing: "編集を続ける"
+        discard: "変更を破棄"
+    buttons:
+      complete: "完了"
+    fields:
+      displayName: "名前"
+      bio: "自己紹介"
+      photoUrl: "プロフィール写真"
+      hint: "${field}を入力"
+createPost:
+  appBar:
+    title: "新規投稿"
+  buttons:
+    post: "シェアする"
+    posting: "投稿中..."
+    selectPhoto: "写真を選択"
+    reSelectPhoto: "写真を選び直す"
+  fields:
+    description:
+      label: "説明"
+      hint: "写真の説明を入力してください"
+      errors:
+        required: "説明を入力してください"
+        tooLong: "説明は2000文字以内で入力してください"
+    location:
+      label: "場所"
+      hint: "場所を入力 (任意)"
+  imagePicker:
+    gallery: "ギャラリーから選択"
+    camera: "カメラで撮影"
+followList:
+  appBar:
+    followers: "フォロワー"
+    following: "フォロー中"
+  button:
+    follow: "フォロー"
+    following: "フォロー中"
+    remove: "削除"
+  tab:
+    followers: "${count} フォロワー"
+    following: "${count} フォロー中"
 notFoundPage:
   title: "404 Not Found"
   header:
