@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../features/authentication/presentation/sign_in_up_screen.dart';
+import '../features/dashboard/presentation/edit_profile/profile_field_type.dart';
 import '../features/initialization/presentation/initialization_screen.dart';
 import '../features/main/presentation/main_screen.dart';
 import 'branches/dashboard_routes.dart';
@@ -77,6 +78,22 @@ class SignInUpRouteData extends GoRouteData {
         TypedGoRoute<DashboardRouteData>(
           name: DashboardRouteData.name,
           path: DashboardRouteData.path,
+          routes: [
+            TypedGoRoute<DashboardFollowListRouteData>(
+              name: DashboardFollowListRouteData.name,
+              path: DashboardFollowListRouteData.path,
+            ),
+            TypedGoRoute<ProfileEditRouteData>(
+              name: ProfileEditRouteData.name,
+              path: ProfileEditRouteData.path,
+              routes: [
+                TypedGoRoute<ProfileEditFieldRouteData>(
+                  name: ProfileEditFieldRouteData.name,
+                  path: ProfileEditFieldRouteData.path,
+                ),
+              ],
+            ),
+          ],
         ),
       ],
     ),
