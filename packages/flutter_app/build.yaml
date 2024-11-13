@@ -22,20 +22,20 @@ targets:
       json_serializable:
         generate_for:
           include:
-            - lib/**/entities/*.dart
-            - lib/**/model/*.dart
+            - lib/**/domain/*.dart
         options:
           # 例外発生時にCheckedFromJsonExceptionをthrowする
           checked: true
           # ネストされたリストに対してtoJson/fromJsonをメソッド生成する
           explicit_to_json: true
-          field_rename: snake
+          # or snake
+          field_rename: none
       riverpod_generator:
         generate_for:
           include:
             - "**/*provider.dart"
             - "**/*repository.dart"
             - "**/*controller.dart"
-            - lib/**/riverpod_example_page/**/*.dart
+            - "**/*service.dart"
         options:
           provider_name_suffix: "Provider" # (default)
