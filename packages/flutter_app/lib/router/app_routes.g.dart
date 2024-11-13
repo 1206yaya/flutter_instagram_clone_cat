@@ -71,6 +71,21 @@ RouteBase get $mainShellRouteData => StatefulShellRouteData.$route(
               path: '/timeline',
               name: '/timeline',
               factory: $TimelineRouteDataExtension._fromState,
+              routes: [
+                GoRouteData.$route(
+                  path: 'stacked-dashboard/:uid',
+                  name: '/stacked-dashboard',
+                  factory: $StackedDashboardRouteDataExtension._fromState,
+                  routes: [
+                    GoRouteData.$route(
+                      path: 'stacked-dashboard/follow-list/:uid',
+                      name: '/stacked-dashboard/follow-list',
+                      factory: $StackedDashboardFollowListRouteDataExtension
+                          ._fromState,
+                    ),
+                  ],
+                ),
+              ],
             ),
           ],
         ),
@@ -155,6 +170,47 @@ extension $TimelineRouteDataExtension on TimelineRouteData {
 
   String get location => GoRouteData.$location(
         '/timeline',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $StackedDashboardRouteDataExtension on StackedDashboardRouteData {
+  static StackedDashboardRouteData _fromState(GoRouterState state) =>
+      StackedDashboardRouteData(
+        uid: state.pathParameters['uid']!,
+      );
+
+  String get location => GoRouteData.$location(
+        '/timeline/stacked-dashboard/${Uri.encodeComponent(uid)}',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $StackedDashboardFollowListRouteDataExtension
+    on StackedDashboardFollowListRouteData {
+  static StackedDashboardFollowListRouteData _fromState(GoRouterState state) =>
+      StackedDashboardFollowListRouteData(
+        uid: state.pathParameters['uid']!,
+      );
+
+  String get location => GoRouteData.$location(
+        '/timeline/stacked-dashboard/${Uri.encodeComponent(uid)}/stacked-dashboard/follow-list/${Uri.encodeComponent(uid)}',
       );
 
   void go(BuildContext context) => context.go(location);

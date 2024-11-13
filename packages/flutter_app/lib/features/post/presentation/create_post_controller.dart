@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../../timeline/presentation/timeline_screen/timeline_controller.dart';
 import '../application/post_service.dart';
 
 part 'create_post_controller.g.dart';
@@ -30,6 +31,7 @@ class CreatePostController extends _$CreatePostController {
           location: location,
         ),
       );
+      await ref.read(timelineControllerProvider.notifier).refresh();
     });
     if (mounted) {
       state = newState;
