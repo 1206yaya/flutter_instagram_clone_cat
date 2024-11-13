@@ -98,6 +98,25 @@ RouteBase get $mainShellRouteData => StatefulShellRouteData.$route(
               path: '/dashboard',
               name: '/dashboard',
               factory: $DashboardRouteDataExtension._fromState,
+              routes: [
+                GoRouteData.$route(
+                  path: 'dashboard/follow-list/:uid',
+                  name: '/dashboard/follow-list',
+                  factory: $DashboardFollowListRouteDataExtension._fromState,
+                ),
+                GoRouteData.$route(
+                  path: 'profile-edit',
+                  name: '/profile-edit',
+                  factory: $ProfileEditRouteDataExtension._fromState,
+                  routes: [
+                    GoRouteData.$route(
+                      path: 'profile-edit-field/:userId/:title/:fieldType',
+                      name: '/profile-edit-field',
+                      factory: $ProfileEditFieldRouteDataExtension._fromState,
+                    ),
+                  ],
+                ),
+              ],
             ),
           ],
         ),
@@ -201,6 +220,73 @@ extension $DashboardRouteDataExtension on DashboardRouteData {
   void replace(BuildContext context) => context.replace(location);
 }
 
+extension $DashboardFollowListRouteDataExtension
+    on DashboardFollowListRouteData {
+  static DashboardFollowListRouteData _fromState(GoRouterState state) =>
+      DashboardFollowListRouteData(
+        uid: state.pathParameters['uid']!,
+      );
+
+  String get location => GoRouteData.$location(
+        '/dashboard/dashboard/follow-list/${Uri.encodeComponent(uid)}',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $ProfileEditRouteDataExtension on ProfileEditRouteData {
+  static ProfileEditRouteData _fromState(GoRouterState state) =>
+      const ProfileEditRouteData();
+
+  String get location => GoRouteData.$location(
+        '/dashboard/profile-edit',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $ProfileEditFieldRouteDataExtension on ProfileEditFieldRouteData {
+  static ProfileEditFieldRouteData _fromState(GoRouterState state) =>
+      ProfileEditFieldRouteData(
+        userId: state.pathParameters['userId']!,
+        title: state.pathParameters['title']!,
+        fieldType: _$ProfileFieldTypeEnumMap
+            ._$fromName(state.pathParameters['fieldType']!),
+      );
+
+  String get location => GoRouteData.$location(
+        '/dashboard/profile-edit/profile-edit-field/${Uri.encodeComponent(userId)}/${Uri.encodeComponent(title)}/${Uri.encodeComponent(_$ProfileFieldTypeEnumMap[fieldType]!)}',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+const _$ProfileFieldTypeEnumMap = {
+  ProfileFieldType.displayName: 'display-name',
+  ProfileFieldType.bio: 'bio',
+};
+
 extension $SettingsRouteDataExtension on SettingsRouteData {
   static SettingsRouteData _fromState(GoRouterState state) =>
       const SettingsRouteData();
@@ -253,4 +339,9 @@ extension $AccountRouteDataExtension on AccountRouteData {
       context.pushReplacement(location);
 
   void replace(BuildContext context) => context.replace(location);
+}
+
+extension<T extends Enum> on Map<T, String> {
+  T _$fromName(String value) =>
+      entries.singleWhere((element) => element.value == value).key;
 }
