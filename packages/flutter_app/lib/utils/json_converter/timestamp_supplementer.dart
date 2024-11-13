@@ -2,8 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 /// 変換対象のTimestampField文字列
 class TimestampField {
-  static const createdAt = 'created_at';
-  static const updatedAt = 'updated_at';
+  static const createdAt = 'createdAt';
+  static const updatedAt = 'updatedAt';
 }
 
 extension MapExt on Map<String, Object?> {
