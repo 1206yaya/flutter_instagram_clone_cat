@@ -10,7 +10,7 @@ class MockUserService extends Mock implements UserService {
   }) async {
     return super.noSuchMethod(
       Invocation.method(#uploadImage, [], {#image: image}),
-      returnValue: Future.value(),
+      returnValue: Future<void>.value(),
     );
   }
 }

@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_auth_mocks/firebase_auth_mocks.dart';
 import 'package:flutter_app/features/authentication/application/auth_service.dart';
 import 'package:flutter_app/features/authentication/presentation/sign_in_up_controller.dart';
+import 'package:flutter_app/utils/firebase/firebase_service.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mockito/mockito.dart';
@@ -82,7 +83,7 @@ void main() {
         when(
           mockAuthService.signInWithEmailAndPassword(
             testingUserData.email,
-            'wrongpassword',
+            'wrong-password',
           ),
         ).thenThrow(
           FirebaseAuthException(
@@ -96,13 +97,13 @@ void main() {
         // Act
         await controller.signIn(
           email: testingUserData.email,
-          password: 'wrongpassword',
+          password: 'wrong-password',
         );
 
         // Assert
         expect(
           container.read(signInUpControllerProvider),
-          isA<AsyncError>(),
+          isA<AsyncError<void>>(),
         );
 
         // Optional: Verify the error details
@@ -120,7 +121,7 @@ void main() {
         verify(
           mockAuthService.signInWithEmailAndPassword(
             testingUserData.email,
-            'wrongpassword',
+            'wrong-password',
           ),
         ).called(1);
       });
@@ -161,7 +162,7 @@ void main() {
           );
 
           final state = container.read(signInUpControllerProvider);
-          expect(state, isA<AsyncError>());
+          expect(state, isA<AsyncError<void>>());
           expect(
             (state as AsyncError).error.toString(),
             contains('Display name cannot be empty'),
@@ -192,7 +193,7 @@ void main() {
 
           expect(
             container.read(signInUpControllerProvider),
-            isA<AsyncError>(),
+            isA<AsyncError<void>>(),
           );
         });
       });

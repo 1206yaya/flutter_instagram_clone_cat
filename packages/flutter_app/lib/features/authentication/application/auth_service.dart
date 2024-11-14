@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../../../utils/firebase/firebase_service.dart';
 import '../../user/data/user_repository.dart';
 import '../../user/domain/user_data.dart';
 import '../../user/domain/user_id_firestore.dart';
@@ -94,11 +95,6 @@ class AuthService {
     // TODO: Implement display name check
     return false;
   }
-}
-
-@Riverpod(keepAlive: true)
-FirebaseAuth firebaseAuth(FirebaseAuthRef ref) {
-  return FirebaseAuth.instance;
 }
 
 @Riverpod(keepAlive: true)

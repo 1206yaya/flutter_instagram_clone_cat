@@ -1,128 +1,140 @@
-## Get Started
+# Flutter Instagram Clone App
 
-Language: English | [日本語](/docs/ja/GET_STARTED.md)
+## Introduction
 
+Language: [Japanese](/docs/ja/GET_STARTED.md) | English
 [![melos](https://img.shields.io/badge/maintained%20with-melos-f700ff.svg?style=flat-square)](https://github.com/invertase/melos)
+<a href="https://www.youtube.com/watch?v=BaXj4c58AGQ">
+<img src="./../images/youtube_thumbnail.png" alt="App Demo" width="400">
+</a>
+This project is an Instagram clone app created as a demonstration of Flutter application development, based on [1206yaya/flutter_app_template](https://github.com/1206yaya/flutter_app_template).
 
-# Flutter App Template
+## Key Features
 
-"Flutter App Template" is a project that templates and introduces approaches to Flutter app development, including architecture and project structure.
+- Authentication System: Email/password authentication using Firebase Authentication
+- Timeline Display: Posts with infinite scroll and refresh support
+- Posting Functionality: Image uploads with descriptions and location information
+- Likes/Comments: Real-time interactions with posts
+- Profile Management: Display and edit user information
+- Follow Feature: Management of follow/follower relationships between users
+- Dark Mode: Theme switching linked to system settings
+- Multi-language Support: Japanese/English
 
-This repository adopts a monorepo approach and consists of multiple internal packages and apps.
+## Technology Stack
 
-This project is based on [altive/flutter_app_template](https://github.com/altive/flutter_app_template). Flutter App Template is a project that introduces architectural and project structure approaches for developing Flutter applications.
+### Frontend
 
-## Package Overview
+- Flutter 3.x
+- Riverpod
+- freezed
+- go_router
 
-### `themes`
+### Backend (Firebase)
 
-This package is responsible for ThemeData and other appearance-related data used in Flutter apps.
+- Firebase Authentication
+- Cloud Firestore
+- Firebase Storage
+- Firebase Analytics
+- Firebase Crashlytics
 
-### `util`
+### Testing
 
-This package stores general-purpose functions that are too small to be separated into independent packages.
+- flutter_test (Widget Tests)
+- integration_test
+- firebase_auth_mocks
+- fake_cloud_firestore
+- firebase_storage_mocks
 
-## App Overview
+## Setup Instructions
 
-### `flutter_app`
+### 1. Prerequisites
 
-This is a template app package for Flutter applications.
-Dev, stg, and prod environments are set up.
+- Flutter SDK 3.x
+- Firebase CLI
+- Make
+- FVM
+- Melos
 
-You can start building it as a different app by changing the app ID and app name.
-Implementing Email/Password login using FireAuth.
-`Integration tests` are also included.
+### 2. Clone the Repository
 
-<p align="left">
-  <img src="docs/images/sign-up.png" width="200">
-  <img src="docs/images/sign-out.png" width="200">
-</p>
+```shell
+git clone https://github.com/1206yaya/flutter_instagram_clone_cat
+cd flutter_instagram_clone_cat
+```
 
-For more details, please check [`flutter_app/README.md`](/packages/flutter_app/docs/en/GET_STARTED.md).
-
-## Getting Started with Development
+### 3. Install Dependencies
 
 ```shell
 make
 ```
 
-The `make` command installs necessary Dart packages like FVM and Melos.
+This command will install:
 
-## TODO List After Creating a New Repository Using This Template
+- FVM
+- Melos
+- FlutterFire CLI
 
-### Replace Strings Across the Project
+### 4. Firebase Project Configuration
 
-- Replace the bundle ID (package name) with your app ID
-  `com.u1206yaya.FlutterAppTemplate` -> `your.domain.id`
+Navigate to the `packages/flutter_app` directory:
 
-## Create Firebase Projects from Console for Each Platform
-
-### Android Setup
-
-Create an Android app in the Firebase console, download `google-services.json`, and place it in `android/app/src/{dev or stg or prod}`.
-
-### iOS Setup
-
-Create an iOS app in the Firebase console, download `GoogleService-Info.plist`, and place it in `ios/{dev or stg or prod}`.
-
-### Web Setup
-
-Create a web app and modify the `firebaseConfig` parameters in `web/index.html` according to the Firebase SDK addition instructions.
-
-- apiKey, authDomain, databaseURL, projectId, storageBucket, messagingSenderId, appId, measurementId
-
-### Modify dart_defines
-
-- Change the `appName` in `{flavor}.env` to your app name.
-- For iOS devices, modify the `googleReversedClientId` in `dart_defines/{dev, stg, prod}.env` to match the contents of each iOS `GoogleService-Info.plist`.
-
-### Modify Firebase Project ID
-
-Configure flutter_app to use your created Firebase project
-Change `PROJECT_ID`, `FIREBASE_DEV_PROJECT_ID`, and `FIREBASE_PROD_PROJECT_ID` in flutter_app/Makefile to your Firebase project IDs.
-
-```
-make config-dev
+```shell
+cd packages/flutter_app
 ```
 
-## Troubleshooting
+Subsequent Firebase configuration for development should be performed in this directory.
 
-```
-Exception occurred
-FirebaseException ([core/duplicate-app] A Firebase App named "[DEFAULT]" already exists)
+1. Create a new project in Firebase Console
+2. Configure Android app
+   - Create an Android app in Firebase Console with package name `com.u1206yaya.FlutterAppTemplate.dev`
+   - Download google-services.json
+   - Place it in android/app/src/dev
+3. Configure iOS app
+
+   - Create an iOS app in Firebase Console with bundle ID `com.u1206yaya.FlutterAppTemplate.dev`
+   - Download GoogleService-Info.plist
+   - Place it in ios/dev
+   - Set up environment variables for iOS:
+     Open `dart_defines/dev.env` and set REVERSED_CLIENT_ID
+     googleReversedClientId=[REVERSED_CLIENT_ID value from GoogleService-Info.plist]
+     Configure dart_defines/stg.env and dart_defines/prod.env if needed
+
+4. Launch the App
+   To run in development mode from the packages/flutter_app directory, execute:
+
+```shell
+flutter run \
+  --dart-define-from-file=dart_defines/dev.env \
+  -t lib/main.dart
 ```
 
-The Firebase project configuration might not be completed.
+This command:
+
+- Loads environment variables from dart_defines/dev.env
+- Launches the app with development configuration
+
+Note: If using Firebase Emulator, start it before launching the app:
+
+```shell
+cd ../../firebase # Navigate to the firebase directory in project root
+firebase emulators:start --import=.seed
+```
 
 ## Package Overview
 
 ### `themes`
 
-This package is responsible for ThemeData and other appearance-related data used in Flutter apps.
+This package handles ThemeData and other appearance-related data used in the Flutter app.
 
 ### `util`
 
-This package stores general-purpose functions that are too small to be separated into independent packages.
-
-### Configuration Overview
-
-Automatic code generation settings are configured in build.yaml.
-`*provider.dart`, `*repository.dart`, and `*controller.dart` are automatically generated.
+This package contains general-purpose functions that are too small to be extracted as independent packages.
 
 ## Firebase SDK Version for iOS and macOS
 
-The desired SDK version is managed in [FirebaseSDKVersionTag.txt](FirebaseSDKVersionTag.txt).
-
+We manage the desired SDK version in [FirebaseSDKVersionTag.txt](FirebaseSDKVersionTag.txt).
 ↓ Click here for the latest version:
 https://github.com/invertase/firestore-ios-sdk-frameworks/releases
-
-## Adding ISSUE_TEMPLATE
-
-If the repository doesn't have `.github/ISSUE_TEMPLATE`, you can use issue templates placed in a special `.github` repository.
-
-For the altive organization, issue templates from the [altive/.github](https://github.com/altive/.github/) repository should work in this repository.
-
-Please copy the issue templates from the above repository as needed.
 
 ## References
 

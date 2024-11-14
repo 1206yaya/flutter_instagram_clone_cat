@@ -8,7 +8,7 @@ part of 'firebase_service.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$firebaseAuthHash() => r'46c40b7c5cf8ab936c0daa96a6af106bd2ae5d51';
+String _$firebaseAuthHash() => r'6a62e9c505a093928d34b41fdc4f46938183efaa';
 
 /// See also [firebaseAuth].
 @ProviderFor(firebaseAuth)
@@ -17,14 +17,14 @@ final firebaseAuthProvider = Provider<FirebaseAuth>.internal(
   name: r'firebaseAuthProvider',
   debugGetCreateSourceHash:
       const bool.fromEnvironment('dart.vm.product') ? null : _$firebaseAuthHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
+  dependencies: const <ProviderOrFamily>[],
+  allTransitiveDependencies: const <ProviderOrFamily>{},
 );
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef FirebaseAuthRef = ProviderRef<FirebaseAuth>;
-String _$firebaseFirestoreHash() => r'2e7f8bd195d91c027c5155f34b719187867bc113';
+String _$firebaseFirestoreHash() => r'f8d9fa0890ab57ba74a1c86c6d0dc7590811b200';
 
 /// See also [firebaseFirestore].
 @ProviderFor(firebaseFirestore)
@@ -34,8 +34,11 @@ final firebaseFirestoreProvider = Provider<FirebaseFirestore>.internal(
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
       : _$firebaseFirestoreHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
+  dependencies: <ProviderOrFamily>[firebaseAuthProvider],
+  allTransitiveDependencies: <ProviderOrFamily>{
+    firebaseAuthProvider,
+    ...?firebaseAuthProvider.allTransitiveDependencies
+  },
 );
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
