@@ -1,0 +1,19 @@
+{
+  "name": "profile_images/BGZgfpien2NgOROfNBLjq1KhiV0e/1731462581274_d066fb55-7475-48a7-be41-f600b51fcecc.jpg",
+  "bucket": "someapp-dev-dfa74.appspot.com",
+  "metageneration": 1,
+  "generation": 1731462581332,
+  "contentType": "image/jpeg",
+  "storageClass": "STANDARD",
+  "contentDisposition": "inline",
+  "downloadTokens": [
+    "a4a0f47c-2579-430a-9461-82b26c9765e2"
+  ],
+  "etag": "kbGrHoJy3FyN8UNc15Lr7ouBILM",
+  "customMetadata": {},
+  "timeCreated": "2024-11-13T01:49:41.332Z",
+  "updated": "2024-11-13T01:49:41.332Z",
+  "size": 1504538,
+  "md5Hash": "du4mCC2RNaBkhsn+hb4WWw==",
+  "crc32c": "4058496629"
+}
