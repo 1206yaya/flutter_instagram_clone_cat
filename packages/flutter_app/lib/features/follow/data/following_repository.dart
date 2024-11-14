@@ -5,7 +5,6 @@ import '../../../utils/firebase/firebase_service.dart';
 import '../../user/domain/user_data.dart';
 import '../../user/domain/user_firestore.dart';
 import '../../user/domain/user_id_firestore.dart';
-import '../domain/follower_firestore.dart';
 import '../domain/following_firestore.dart';
 
 part 'following_repository.g.dart';
@@ -44,48 +43,41 @@ class FollowingRepository {
     });
   }
 
-  Future<void> followUser({
+  /// フォロワーを削除する関数
+  void removeFollowingInBatch({
     required UserIdFirestore currentUserId,
-    required UserIdFirestore targetUserId,
-  }) async {
-    final timestamp = FieldValue.serverTimestamp();
-    final batch = firestore.batch()
-      ..set(
+    required UserIdFirestore followerId,
+    required WriteBatch batch,
+  }) {
+    final userRef = firestore
+        .collection(UserFirestore.collectionName)
+        .doc(followerId.value);
+
+    batch
+      ..delete(
         firestore
             .collection(FollowingFirestore.collectionName)
-            .doc(currentUserId.value)
+            .doc(followerId.value)
             .collection(FollowingFirestore.subCollectionName)
-            .doc(targetUserId.value),
-        {UserData.createdAtField: timestamp},
-      )
-      ..set(
-        firestore
-            .collection(FollowerFirestore.collectionName)
-            .doc(targetUserId.value)
-            .collection(FollowerFirestore.subCollectionName)
             .doc(currentUserId.value),
-        {UserData.createdAtField: timestamp},
       )
       ..update(
-        firestore
-            .collection(UserFirestore.collectionName)
-            .doc(currentUserId.value),
-        {UserData.followingCountField: FieldValue.increment(1)},
-      )
-      ..update(
-        firestore
-            .collection(UserFirestore.collectionName)
-            .doc(targetUserId.value),
-        {UserData.followersCountField: FieldValue.increment(1)},
+        userRef,
+        {UserData.followingCountField: FieldValue.increment(-1)},
       );
-    await batch.commit();
   }
 
-  Future<void> unfollowUser({
+  /// フォローを解除する関数
+  void unfollowInBatch({
     required UserIdFirestore currentUserId,
     required UserIdFirestore targetUserId,
-  }) async {
-    final batch = firestore.batch()
+    required WriteBatch batch,
+  }) {
+    final currentUserRef = firestore
+        .collection(UserFirestore.collectionName)
+        .doc(currentUserId.value);
+
+    batch
       ..delete(
         firestore
             .collection(FollowingFirestore.collectionName)
@@ -93,26 +85,35 @@ class FollowingRepository {
             .collection(FollowingFirestore.subCollectionName)
             .doc(targetUserId.value),
       )
-      ..delete(
-        firestore
-            .collection(FollowerFirestore.collectionName)
-            .doc(targetUserId.value)
-            .collection(FollowerFirestore.subCollectionName)
-            .doc(currentUserId.value),
-      )
       ..update(
-        firestore
-            .collection(UserFirestore.collectionName)
-            .doc(currentUserId.value),
+        currentUserRef,
         {UserData.followingCountField: FieldValue.increment(-1)},
+      );
+  }
+
+  void followInBatch({
+    required UserIdFirestore currentUserId,
+    required UserIdFirestore targetUserId,
+    required WriteBatch batch,
+    required FieldValue timestamp,
+  }) {
+    final currentUserRef = firestore
+        .collection(UserFirestore.collectionName)
+        .doc(currentUserId.value);
+
+    batch
+      ..set(
+        firestore
+            .collection(FollowingFirestore.collectionName)
+            .doc(currentUserId.value)
+            .collection(FollowingFirestore.subCollectionName)
+            .doc(targetUserId.value),
+        {UserData.createdAtField: timestamp},
       )
       ..update(
-        firestore
-            .collection(UserFirestore.collectionName)
-            .doc(targetUserId.value),
-        {UserData.followersCountField: FieldValue.increment(-1)},
+        currentUserRef,
+        {UserData.followingCountField: FieldValue.increment(1)},
       );
-    await batch.commit();
   }
 
   Stream<bool> checkFollowingStatus({

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../../gen/strings.g.dart';
+import '../../../../router/router.dart';
 import '../../../../widgets/async_value_widget.dart';
 import '../../../../widgets/profile_avatar.dart';
 import '../../../authentication/application/auth_service.dart';
@@ -242,7 +243,7 @@ class FollowListTileWidget extends StatelessWidget {
         imageUrl: user.data.photoUrl,
         radius: 24,
         onTap: () {
-          // Todo: ユーザーのプロフィール画面に遷移
+          StackedDashboardRouteData(uid: user.uid.value).go(context);
         },
       ),
       title: Text(

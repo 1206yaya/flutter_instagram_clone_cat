@@ -8,7 +8,7 @@ part of 'following_service.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$followingServiceHash() => r'e50a04889fe3d46d9e28dcad76e470075514c439';
+String _$followingServiceHash() => r'6915bbbfb6038dee78009602ea4050bf4f195e88';
 
 /// See also [followingService].
 @ProviderFor(followingService)

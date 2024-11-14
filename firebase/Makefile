@@ -15,8 +15,7 @@ start:
 
 start-debug:
 	-pkill -f firebase || true
-	firebase emulators:start  --inspect-functions --project=${PROJECT_ID}
-# --import=.seed
+	firebase emulators:start  --inspect-functions --project=${PROJECT_ID} --import=.seed
 # 
 
 exportdata:

@@ -7,7 +7,6 @@ import '../../user/domain/user_data.dart';
 import '../../user/domain/user_firestore.dart';
 import '../../user/domain/user_id_firestore.dart';
 import '../domain/follower_firestore.dart';
-import '../domain/following_firestore.dart';
 
 part 'follower_repository.g.dart';
 
@@ -45,11 +44,42 @@ class FollowerRepository {
     });
   }
 
-  Future<void> removeFollower({
+  void followInBatch({
+    required UserIdFirestore currentUserId,
+    required UserIdFirestore targetUserId,
+    required WriteBatch batch,
+    required FieldValue timestamp,
+  }) {
+    final targetUserRef = firestore
+        .collection(UserFirestore.collectionName)
+        .doc(targetUserId.value);
+
+    batch
+      ..set(
+        firestore
+            .collection(FollowerFirestore.collectionName)
+            .doc(targetUserId.value)
+            .collection(FollowerFirestore.subCollectionName)
+            .doc(currentUserId.value),
+        {UserData.createdAtField: timestamp},
+      )
+      ..update(
+        targetUserRef,
+        {UserData.followersCountField: FieldValue.increment(1)},
+      );
+  }
+
+  /// フォロワーを削除する関数
+  void removeFollowerInBatch({
     required UserIdFirestore currentUserId,
     required UserIdFirestore followerId,
-  }) async {
-    final batch = firestore.batch()
+    required WriteBatch batch,
+  }) {
+    final userRef = firestore
+        .collection(UserFirestore.collectionName)
+        .doc(currentUserId.value);
+
+    batch
       ..delete(
         firestore
             .collection(FollowerFirestore.collectionName)
@@ -57,26 +87,34 @@ class FollowerRepository {
             .collection(FollowerFirestore.subCollectionName)
             .doc(followerId.value),
       )
+      ..update(
+        userRef,
+        {UserData.followersCountField: FieldValue.increment(-1)},
+      );
+  }
+
+  /// フォローを解除する関数
+  void unfollowInBatch({
+    required UserIdFirestore currentUserId,
+    required UserIdFirestore targetUserId,
+    required WriteBatch batch,
+  }) {
+    final targetUserRef = firestore
+        .collection(UserFirestore.collectionName)
+        .doc(targetUserId.value);
+
+    batch
       ..delete(
         firestore
-            .collection(FollowingFirestore.collectionName)
-            .doc(followerId.value)
-            .collection(FollowingFirestore.subCollectionName)
+            .collection(FollowerFirestore.collectionName)
+            .doc(targetUserId.value)
+            .collection(FollowerFirestore.subCollectionName)
             .doc(currentUserId.value),
       )
       ..update(
-        firestore
-            .collection(UserFirestore.collectionName)
-            .doc(currentUserId.value),
+        targetUserRef,
         {UserData.followersCountField: FieldValue.increment(-1)},
-      )
-      ..update(
-        firestore
-            .collection(UserFirestore.collectionName)
-            .doc(followerId.value),
-        {UserData.followingCountField: FieldValue.increment(-1)},
       );
-    await batch.commit();
   }
 
   Stream<bool> checkFollowerStatus({

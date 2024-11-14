@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../gen/strings.g.dart';
+import '../../../../router/router.dart';
 import '../../../user/domain/user_firestore.dart';
 import '../../../user/domain/user_id_firestore.dart';
 
@@ -39,7 +40,7 @@ class ProfileStats extends StatelessWidget {
     }
 
     void navigateToFollowList(BuildContext context, UserIdFirestore userId) {
-      // Todo: Implement
+      StackedDashboardFollowListRouteData(uid: userId.value).go(context);
     }
 
     return Row(

@@ -8,7 +8,7 @@ part of 'follower_service.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$followerServiceHash() => r'3fbe5b891ca57ab7e566fb669c45c8b39d888f00';
+String _$followerServiceHash() => r'12acafa77109486cd8829d02dc21eaec03e99b9c';
 
 /// See also [followerService].
 @ProviderFor(followerService)
