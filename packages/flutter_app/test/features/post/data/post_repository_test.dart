@@ -158,5 +158,113 @@ void main() {
       final notExists = await postRepository.doesPostExist('non_existent');
       expect(notExists, isFalse);
     });
+
+    group('Like functionality', () {
+      late PostFirestore testPost;
+
+      setUp(() async {
+        testPost = mockPostGenerator.createPost(
+          ownerId: const UserIdFirestore(value: 'other_user_id'),
+          data: mockPostGenerator.createPostData(
+            ownerId: const UserIdFirestore(value: 'other_user_id'),
+            likesCount: 0,
+          ),
+        );
+        await setPostFirestore(fakeFirestore, testPost);
+      });
+
+      test('getPostLikeData - 新規投稿の初期いいねステータスを確認', () async {
+        final likeData = await postRepository.getPostLikeData(
+          postId: testPost.id,
+          userId: testUserId,
+        );
+
+        expect(likeData.isLiked, isFalse);
+        expect(likeData.likesCount, equals(0));
+      });
+
+      test('getPostLikeData - 存在しない投稿のいいねステータス取得時に例外が発生することを確認', () {
+        expect(
+          () => postRepository.getPostLikeData(
+            postId: const PostIdFirestore(value: 'non_existent'),
+            userId: testUserId,
+          ),
+          throwsException,
+        );
+      });
+
+      test('togglePostLike - いいねの追加と削除が正しく動作することを確認', () async {
+        // 1回目のトグル（いいね追加）
+        await postRepository.togglePostLike(
+          postId: testPost.id,
+          userId: testUserId,
+        );
+
+        var likeData = await postRepository.getPostLikeData(
+          postId: testPost.id,
+          userId: testUserId,
+        );
+        expect(likeData.isLiked, isTrue);
+        expect(likeData.likesCount, equals(1));
+
+        // 2回目のトグル（いいね削除）
+        await postRepository.togglePostLike(
+          postId: testPost.id,
+          userId: testUserId,
+        );
+
+        likeData = await postRepository.getPostLikeData(
+          postId: testPost.id,
+          userId: testUserId,
+        );
+        expect(likeData.isLiked, isFalse);
+        expect(likeData.likesCount, equals(0));
+      });
+
+      test('togglePostLike - 存在しない投稿へのいいね操作時に例外が発生することを確認', () {
+        expect(
+          () => postRepository.togglePostLike(
+            postId: const PostIdFirestore(value: 'non_existent'),
+            userId: testUserId,
+          ),
+          throwsException,
+        );
+      });
+
+      test('togglePostLike - 複数ユーザーのいいねが正しく動作することを確認', () async {
+        const otherUserId = UserIdFirestore(value: 'other_test_user_id');
+
+        // 1人目のユーザーがいいね
+        await postRepository.togglePostLike(
+          postId: testPost.id,
+          userId: testUserId,
+        );
+
+        // 2人目のユーザーがいいね
+        await postRepository.togglePostLike(
+          postId: testPost.id,
+          userId: otherUserId,
+        );
+
+        var likeData = await postRepository.getPostLikeData(
+          postId: testPost.id,
+          userId: testUserId,
+        );
+        expect(likeData.likesCount, equals(2));
+
+        // 1人目のユーザーがいいねを解除
+        await postRepository.togglePostLike(
+          postId: testPost.id,
+          userId: testUserId,
+        );
+
+        likeData = await postRepository.getPostLikeData(
+          postId: testPost.id,
+          userId: otherUserId,
+        );
+        expect(likeData.likesCount, equals(1));
+        expect(likeData.isLiked, isTrue);
+      });
+    });
   });
 }

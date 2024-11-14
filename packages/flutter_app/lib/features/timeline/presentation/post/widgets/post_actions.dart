@@ -1,10 +1,11 @@
-import "package:flutter/material.dart";
-import "package:flutter_app/features/post/domain/post_firestore.dart";
-import "package:flutter_app/features/timeline/application/timeline_post_service.dart";
-import "package:flutter_app/features/timeline/presentation/post/post_card/post_card_controller.dart";
-import "package:flutter_app/features/timeline/presentation/post/widgets/like_button.dart";
-import "package:flutter_app/widgets/async_value_widget.dart";
-import "package:hooks_riverpod/hooks_riverpod.dart";
+import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+
+import '../../../../../widgets/async_value_widget.dart';
+import '../../../../post/data/post_repository.dart';
+import '../../../../post/domain/post_firestore.dart';
+import '../post_card/post_card_controller.dart';
+import 'like_button.dart';
 
 class PostActions extends ConsumerWidget {
   const PostActions({

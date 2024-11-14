@@ -1,8 +1,10 @@
-import "package:flutter_app/features/post/domain/post_id_firestore.dart";
-import "package:flutter_app/features/timeline/application/timeline_post_service.dart";
-import "package:riverpod_annotation/riverpod_annotation.dart";
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part "post_card_controller.g.dart";
+import '../../../../post/data/post_repository.dart';
+import '../../../../post/domain/post_id_firestore.dart';
+import '../../../application/timeline_post_service.dart';
+
+part 'post_card_controller.g.dart';
 
 @riverpod
 class PostCardController extends _$PostCardController {

@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../utils/firebase/firebase_service.dart';
@@ -8,6 +9,27 @@ import '../domain/post_firestore.dart';
 import '../domain/post_id_firestore.dart';
 
 part 'post_repository.g.dart';
+
+@immutable
+class PostLikeData {
+  const PostLikeData({
+    required this.isLiked,
+    required this.likesCount,
+  });
+
+  final bool isLiked;
+  final int likesCount;
+
+  @override
+  bool operator ==(Object other) {
+    return other is PostLikeData &&
+        other.isLiked == isLiked &&
+        other.likesCount == likesCount;
+  }
+
+  @override
+  int get hashCode => Object.hash(isLiked, likesCount);
+}
 
 class PostRepository {
   PostRepository({
@@ -76,6 +98,68 @@ class PostRepository {
     return query.snapshots().map(
           (snapshot) => snapshot.docs.map(PostFirestore.fromDb).toList(),
         );
+  }
+
+  Future<void> togglePostLike({
+    required PostIdFirestore postId,
+    required UserIdFirestore userId,
+  }) async {
+    final postRef = _collectionRef.doc(postId.value);
+    final likeRef =
+        postRef.collection(PostFirestore.likesCollectionName).doc(userId.value);
+
+    await firestore.runTransaction((transaction) async {
+      final postDoc = await transaction.get(postRef);
+      final likeDoc = await transaction.get(likeRef);
+
+      if (!postDoc.exists) {
+        throw Exception('Post not found');
+      }
+
+      final postData = PostData.fromDocument(postDoc);
+      final currentLikesCount = postData.likesCount;
+      if (likeDoc.exists) {
+        // Unlike: Delete like document and decrement count
+        transaction
+          ..delete(likeRef)
+          ..update(postRef, {
+            PostData.likesCountField: currentLikesCount - 1,
+          });
+      } else {
+        // Like: Create like document and increment count
+        transaction
+          ..set(likeRef, {
+            PostData.createdAtField: FieldValue.serverTimestamp(),
+          })
+          ..update(postRef, {
+            PostData.likesCountField: currentLikesCount + 1,
+          });
+      }
+    });
+  }
+
+  /// Get like status and count for a post
+  Future<PostLikeData> getPostLikeData({
+    required PostIdFirestore postId,
+    required UserIdFirestore userId,
+  }) async {
+    final postRef = _collectionRef.doc(postId.value);
+    final likeRef =
+        postRef.collection(PostFirestore.likesCollectionName).doc(userId.value);
+
+    final postDoc = await postRef.get();
+    final likeDoc = await likeRef.get();
+
+    if (!postDoc.exists) {
+      throw Exception('Post not found');
+    }
+
+    final postData = PostData.fromDocument(postDoc);
+
+    return PostLikeData(
+      isLiked: likeDoc.exists,
+      likesCount: postData.likesCount,
+    );
   }
 
   /// Check if a post exists
