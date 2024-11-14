@@ -84,7 +84,7 @@ class SignInUpScreenRobot {
     await tester.pumpAndSettle();
   }
 
-  expectSignInFieldsVisible() {
+  void expectSignInFieldsVisible() {
     expect(find.byKey(SignInUpScreen.displayNameKey), findsNothing);
     expect(find.byKey(SignInUpScreen.emailKey), findsOneWidget);
     expect(find.byKey(SignInUpScreen.passwordKey), findsOneWidget);

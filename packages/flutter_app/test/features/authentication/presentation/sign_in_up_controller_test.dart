@@ -82,7 +82,7 @@ void main() {
         when(
           mockAuthService.signInWithEmailAndPassword(
             testingUserData.email,
-            'wrongpassword',
+            'wrong-password',
           ),
         ).thenThrow(
           FirebaseAuthException(
@@ -96,13 +96,13 @@ void main() {
         // Act
         await controller.signIn(
           email: testingUserData.email,
-          password: 'wrongpassword',
+          password: 'wrong-password',
         );
 
         // Assert
         expect(
           container.read(signInUpControllerProvider),
-          isA<AsyncError>(),
+          isA<AsyncError<void>>(),
         );
 
         // Optional: Verify the error details
@@ -120,7 +120,7 @@ void main() {
         verify(
           mockAuthService.signInWithEmailAndPassword(
             testingUserData.email,
-            'wrongpassword',
+            'wrong-password',
           ),
         ).called(1);
       });
@@ -161,7 +161,7 @@ void main() {
           );
 
           final state = container.read(signInUpControllerProvider);
-          expect(state, isA<AsyncError>());
+          expect(state, isA<AsyncError<void>>());
           expect(
             (state as AsyncError).error.toString(),
             contains('Display name cannot be empty'),
@@ -192,7 +192,7 @@ void main() {
 
           expect(
             container.read(signInUpControllerProvider),
-            isA<AsyncError>(),
+            isA<AsyncError<void>>(),
           );
         });
       });

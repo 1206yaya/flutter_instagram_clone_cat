@@ -41,7 +41,7 @@ class MockPostRepository extends Mock implements PostRepository {
   Future<void> updatePost(PostFirestore post) {
     return super.noSuchMethod(
       Invocation.method(#updatePost, [post]),
-      returnValue: Future.value(),
+      returnValue: Future<void>.value(),
     ) as Future<void>;
   }
 
@@ -49,7 +49,7 @@ class MockPostRepository extends Mock implements PostRepository {
   Future<void> deletePost(PostIdFirestore postId) {
     return super.noSuchMethod(
       Invocation.method(#deletePost, [postId]),
-      returnValue: Future.value(),
+      returnValue: Future<void>.value(),
     ) as Future<void>;
   }
 
