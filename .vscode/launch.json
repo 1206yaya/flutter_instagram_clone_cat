@@ -52,7 +52,7 @@
       ],
       // iOSシミュレータのデバイスID
       // flutter devices コマンドで確認できる
-      "deviceId": "5F935E5D-1B50-4133-A16C-F9B3CCA5CB2B"
+      "deviceId": "D07107AF-7309-4D55-949C-3135CBA363B2"
     }
   ]
 }
